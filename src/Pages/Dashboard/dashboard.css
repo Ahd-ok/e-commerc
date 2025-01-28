@@ -1,0 +1,40 @@
+/* .dashboard {
+  min-height: calc(100vh - 80px);
+  background-image: url(../../Assets/BackGround.jpg);
+  background-position: center;
+  background-size: cover;
+} */
+
+.custom-progress {
+  width: 100%;
+  height: 9px;
+  background-color: #777;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.custom-progress .inner-progress {
+  width: 0%;
+  height: 100%;
+  background-color: #0086fa;
+  display: block;
+  border-radius: 6px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.custom-progress .inner-progress::after {
+  content: attr(percent);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 20px;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #777;
+  color: white;
+  top: -25px;
+  right: 0px;
+}

@@ -1,0 +1,14 @@
+.landing .text {
+  max-width: 400px;
+  width: 100%;
+  line-height: 1.3;
+}
+
+.landing .text h1 {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.landing .text p {
+  font-size: 20px;
+}

@@ -1,0 +1,42 @@
+.top-bar {
+  position: relative;
+  background-color: transparent;
+  top: 0px;
+  left: 0;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.side-bar {
+  left: 0px;
+  top: 0;
+  bottom: 0;
+  box-shadow: 0 10px 5px rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(255, 255, 255, 0.712);
+  z-index: 1;
+  height: calc(100vh - 70px);
+}
+
+.side-bar-link {
+  color: white;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: 0.3s;
+  margin: 0px 8px;
+}
+
+.side-bar-link .side-bar-link:hover {
+  color: rgb(24, 24, 24);
+}
+
+.side-bar .active {
+  background-color: #f2f3fe;
+  color: #038edc;
+}
+
+.side-bar .active:hover {
+  color: #038edc;
+}
+a {
+  text-decoration: none !important;
+}
