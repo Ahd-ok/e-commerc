@@ -1,57 +1,70 @@
 import { useContext, useEffect, useState } from 'react'
-import { Container, Form, InputGroup } from 'react-bootstrap'
+import { Container, Dropdown, Form, InputGroup, NavLink } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../../Assets/logo.png'
 import shopping from '../../../Assets/shopping.png'
 import profile from '../../../Assets/profile.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faX } from '@fortawesome/free-solid-svg-icons'
-import { CAT } from '../../../Api/Api'
+import { LOGOUT, USER } from '../../../Api/Api'
 import { Axios } from '../../../Api/axios'
-import shortName from '../../../helpers/shortName'
 import './NavBar.css'
-import GetSkeleton from '../Skeleton/GetSkeleton'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Cart } from '../../../Context/AddToCart'
 import PlusMinusBtn from '../Btns/PlusMinusBtn'
+import Cookie from 'cookie-universal'
+import Loading from '../../Dashboard/Spinner/Loading'
 
 export default function NavBar() {
-  // //Use Navigate
-  // const nav = useNavigate();
-
-  // function handleCategory() {
-  //   nav('/categories')
-  // }
+  //Using Nav
+  const nav = useNavigate();
 
   //UseState 
-  // const [Categories, setCategories] = useState([]);
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
+  const [spinner, setSpinner] = useState(false);
   const [products, setProducts] = useState([]);
-  //const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(1)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Get Token From Cookie
+  const cookie = Cookie()
+  const token = cookie.get('e-commerce')
+
   //Use Context 
   const { addCart } = useContext(Cart);
 
-  /*
-  //Get last 5 Categories
+  //get user 
   useEffect(() => {
-    Axios.get(`${CAT}`).then((res) => setCategories(res.data.slice(-5))).finally(() => setLoading(false));
-  }, [])
+    Axios.get(`${USER}`).then((res) => {
+      setName(res.data.name);
+      setRole(res.data.role)
+    })
+  }, []);
 
-  // render Categories 
-  const showCategories = Categories.map((item, key) =>
-    <div key={key} className='d-flex align-items-center category-bar px-2 py-3'>
-      <img style={{ marginRight: '10px', borderRadius: '50%' }} width={'50px'} height={'50px'} src={item.image} alt="" />
-      <p className='m-0 '>
-        {shortName(item.title, 15)}
-      </p>
-    </div>
-  )
-    */
+
+  // Handle LogOut
+  async function handleLogout() {
+    try {
+      await Axios.get(`/${LOGOUT}`);
+      cookie.remove('e-commerce')
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  //go to login
+  function goToLogin() {
+    setSpinner(true)
+    setTimeout(() => {
+      nav('/login')
+    }, 1000)
+  }
+
 
   // get Product From LocalStorage
   useEffect(() => {
@@ -110,64 +123,72 @@ export default function NavBar() {
 
 
   return (
-    <div className=' position-absolute w-100 z-1'>
-      <Container>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Cart</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>{showProduct}</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal>
-        <div className='d-flex flex-wrap justify-content-between align-items-center py-3 px-2'>
-          <Link to={'/'} className='col-3 position-relative' style={{ top: '5px' }} >
-            <img height={'45px'} src={logo} alt="logo" />
-          </Link>
-          <div className='col-12 col-md-4 col-xl-6 order-md-2 order-3 mt-md-0 mt-3 d-flex align-items-center col-5 '>
-            <InputGroup>
-              <Form.Control
-                className='input-search rounded-0'
-                type='search'
-                placeholder="البحث عن المنتج"
-              />
-            </InputGroup>
-
-            <p className='d-flex align-items-center btn btn-primary rounded-0 px-3 mb-0'>
-              <FontAwesomeIcon icon={faMagnifyingGlass} className='me-2' />
-              بحث
-            </p>
-          </div>
-          <div className='col-2 d-flex align-items-center justify-content-end gap-4 order-1 order-md-3'>
-            <div style={{ cursor: 'pointer' }} onClick={handleShow}>
-              <img src={shopping} width={'25px'} alt='cart' />
-            </div>
-            <Link style={{ cursor: 'pinter' }} to={'/profile'}>
-              <img src={profile} alt="" width={'35px'} />
+    <>{spinner
+      ? <Loading />
+      :
+      <div style={{ backgroundColor: 'transparent' }} className='position-absolute w-100 z-1'>
+        <Container>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Cart</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>{showProduct}</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <div className='d-flex flex-wrap justify-content-between align-items-center py-3 px-2'>
+            <Link to={'/'} className='col-3 position-relative' style={{ top: '5px' }} >
+              <img height={'30px'} src={logo} alt="logo" />
             </Link>
-          </div>
-        </div>
-        {/*  
-        <div>
-          <div className='mt-4 d-flex align-items-center justify-content-between text-white flex-wrap '>
-            {loading ? <GetSkeleton length={5} height={'35px'} width={'150px'} classes={'col-lg-2 col-md-4 col-12'} /> :
-              <div className='d-flex align-items-center justify-content-between w-100'>
-                {showCategories}
-                <p onClick={handleCategory} className='category-bar m-0 px-2 py-3'>
-                  Show More
-                </p>
-              </div>}
+            <div className='col-12 col-md-4 col-xl-6 order-md-2 order-3 mt-md-0 mt-3 d-flex align-items-center col-5 '>
+              <InputGroup>
+                <Form.Control
+                  className='input-search rounded-0'
+                  type='search'
+                  placeholder="البحث عن المنتج"
+                />
+              </InputGroup>
 
+              <p className='d-flex align-items-center btn btn-primary rounded-0 px-3 mb-0'>
+                <FontAwesomeIcon icon={faMagnifyingGlass} className='me-2' />
+                بحث
+              </p>
+            </div>
+            <div className='col-2 d-flex align-items-center justify-content-end gap-4 order-1 order-md-3'>
+              <div style={{ cursor: 'pointer' }} onClick={handleShow}>
+                <img src={shopping} width={'25px'} alt='cart' />
+              </div>
+              <div>
+                {token
+                  ? name === ''
+                    ? <Loading btnStyle={true} />
+                    : <Dropdown>
+                      <Dropdown.Toggle variant="light" id="dropdown-basic">
+                        {name}
+                      </Dropdown.Toggle>
+                      < Dropdown.Menu >
+                        {role === '1999' || role === '1995' ?
+                          <Dropdown.Item as="button" >
+                            <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                          </Dropdown.Item> : ''}
+                        <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  :
+                  <Link style={{ cursor: 'pinter' }} onClick={goToLogin}>
+                    <img src={profile} alt="" width={'35px'} /></Link>
+                }
+              </div>
+
+            </div>
           </div>
-        </div>
-        */}
-      </Container >
-    </div >
+
+        </Container >
+      </div >}
+    </>
+
   )
 }

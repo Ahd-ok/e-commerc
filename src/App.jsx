@@ -41,7 +41,7 @@ function App() {
         <Route path="/*" element={<Error404 />} />
 
         {/* Protected Route */}
-        <Route element={<RequireAuth allowedRole={['1995', '1996', '1999']} />}>
+        <Route element={<RequireAuth allowedRole={['1995', '1999']} />}>
           <Route path="/dashboard" element={<Dashboard />}>
             {/* Admin */}
             <Route element={<RequireAuth allowedRole={['1995']} />}>

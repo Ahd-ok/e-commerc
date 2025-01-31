@@ -1,0 +1,11 @@
+.category-bar {
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.category-bar:hover {
+  background-color: #1f72d1bd;
+  color: white !important;
+}

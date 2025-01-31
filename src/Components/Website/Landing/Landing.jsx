@@ -4,7 +4,7 @@ import landing from '../../../Assets/1.png'
 import { Link } from 'react-router-dom'
 export default function Landing() {
   return (
-    <div className='landing py-5 bg-section'>
+    <div className='landing'>
       <div className='container landing-contain d-flex justify-content-between align-items-center'>
         <div className="col-md-6 d-sm-none d-md-block">
           <img width={'90%'} src={landing} alt="landing" />

@@ -29,3 +29,10 @@ ul {
 .pagination-tag-anchor:hover {
   background-color: #eee;
 }
+
+.bg-section {
+  background-image: url(./Assets/BackGround.jpg);
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}

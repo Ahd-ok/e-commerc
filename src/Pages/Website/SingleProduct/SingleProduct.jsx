@@ -80,8 +80,8 @@ export default function SingleProduct() {
   }
 
   return (
-    <div>
-      <Container style={{ height: '100vh' }} className='py-5'>
+    <div className='bg-section'>
+      <Container className='py-5'>
         {loading ?
           <div className='d-flex w-100 justify-content-center gap-3 py-5'>
             <div className='col-7'>
@@ -97,7 +97,6 @@ export default function SingleProduct() {
                 </div>
               </div>
             </div>
-
             <div className='col-lg-4 col-md-6 col-12'>
               <GetSkeleton length={1} height='250px' />
               <div className='d-flex justify-content-center mt-1 w-100'>
@@ -106,10 +105,10 @@ export default function SingleProduct() {
             </div>
           </div>
           :
-          <div >
+          <div>
             <div style={{ backgroundColor: 'rgb(255 255 255 / 0.7)' }}
-              className='d-flex align-items-start justify-content-center column-gap-5 flex-wrap p-4 rounded'>
-              <div className='col-lg-7 col-md-6 col-12 text-end py-5 '>
+              className='mt-5 d-flex align-items-start justify-content-center column-gap-5 flex-wrap p-4 rounded'>
+              <div className='col-lg-7 col-md-6 col-12 text-end pb-5 '>
                 <h1 className='mb-3'>{product.title}</h1>
                 <h5 className='mb-5 text-secondary'>{product.description}</h5>
                 <h3 className='border-bottom pb-5'>{product.About}</h3>
@@ -134,12 +133,17 @@ export default function SingleProduct() {
                 </div>
               </div>
               <div className='col-lg-4 col-md-6 col-12'>
-                <ImageGallery items={productImage} />
+                <ImageGallery
+                  items={productImage}
+                  showFullscreenButton={false}
+                  showPlayButton={false}
+                  showNav={false}
+                />
               </div>
             </div>
           </div>
         }
       </Container>
-    </div >
+    </div>
   )
 }

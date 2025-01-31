@@ -31,13 +31,6 @@ export default function TopBar() {
   }, [])
 
   // Handle LogOut
-  // function handleLogout() {
-
-  //   setTimeout(() => {
-  //     getLogOut();
-  //   }, 1000)
-  // }
-
   async function handleLogout() {
     setLoading(true);
     try {
@@ -47,7 +40,6 @@ export default function TopBar() {
     } catch (error) {
       console.log(error)
     }
-
   }
 
   //Use Context To change value when click on icon

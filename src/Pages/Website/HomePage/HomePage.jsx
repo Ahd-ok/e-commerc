@@ -4,13 +4,17 @@ import ShowLatestSaleProducts from '../../../Components/Website/Product/Sale Pro
 import ShowTopRate from '../../../Components/Website/Product/TopRate/ShowTopRate'
 import { Container } from 'react-bootstrap'
 import ShowLatestProduct from '../../../Components/Website/Product/latestProduct/ShowLatestProduct'
+import ImageSlider from '../../../Components/Website/imageSlider/imageSlider'
+import ShowCategories from '../../../Components/Website/ShowCategories/ShowCategories'
+
 
 export default function HomePage() {
 
   return (
     <>
       <Landing />
-      {/* 
+      <ImageSlider />
+      <ShowCategories />
       <ShowLatestSaleProducts />
       <div className='bg-section'>
         <Container>
@@ -20,7 +24,6 @@ export default function HomePage() {
           </div>
         </Container>
       </div >
-       */}
     </>
   )
 }
