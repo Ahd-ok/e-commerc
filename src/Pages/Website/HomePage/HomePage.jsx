@@ -10,6 +10,7 @@ export default function HomePage() {
   return (
     <>
       <Landing />
+      {/* 
       <ShowLatestSaleProducts />
       <div className='bg-section'>
         <Container>
@@ -19,6 +20,7 @@ export default function HomePage() {
           </div>
         </Container>
       </div >
+       */}
     </>
   )
 }

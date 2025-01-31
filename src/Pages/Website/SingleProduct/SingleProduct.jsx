@@ -80,7 +80,7 @@ export default function SingleProduct() {
   }
 
   return (
-    <div className='bg-section'>
+    <div>
       <Container style={{ height: '100vh' }} className='py-5'>
         {loading ?
           <div className='d-flex w-100 justify-content-center gap-3 py-5'>

@@ -17,16 +17,17 @@ import { Cart } from '../../../Context/AddToCart'
 import PlusMinusBtn from '../Btns/PlusMinusBtn'
 
 export default function NavBar() {
-  //Use Navigate
-  const nav = useNavigate();
-  function handleCategory() {
-    nav('/categories')
-  }
+  // //Use Navigate
+  // const nav = useNavigate();
+
+  // function handleCategory() {
+  //   nav('/categories')
+  // }
 
   //UseState 
-  const [Categories, setCategories] = useState([]);
+  // const [Categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(1)
   const handleClose = () => setShow(false);
@@ -35,6 +36,7 @@ export default function NavBar() {
   //Use Context 
   const { addCart } = useContext(Cart);
 
+  /*
   //Get last 5 Categories
   useEffect(() => {
     Axios.get(`${CAT}`).then((res) => setCategories(res.data.slice(-5))).finally(() => setLoading(false));
@@ -42,13 +44,14 @@ export default function NavBar() {
 
   // render Categories 
   const showCategories = Categories.map((item, key) =>
-    <div key={key} className='d-flex flex-wrap align-items-center category-bar px-2 py-3'>
-      <img style={{ marginRight: '10px', borderRadius: '50%' }} width={'30px'} src={item.image} alt="" />
+    <div key={key} className='d-flex align-items-center category-bar px-2 py-3'>
+      <img style={{ marginRight: '10px', borderRadius: '50%' }} width={'50px'} height={'50px'} src={item.image} alt="" />
       <p className='m-0 '>
         {shortName(item.title, 15)}
       </p>
     </div>
   )
+    */
 
   // get Product From LocalStorage
   useEffect(() => {
@@ -107,8 +110,8 @@ export default function NavBar() {
 
 
   return (
-    <div className='bg-section'>
-      <>
+    <div className=' position-absolute w-100 z-1'>
+      <Container>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Cart</Modal.Title>
@@ -123,9 +126,7 @@ export default function NavBar() {
             </Button>
           </Modal.Footer>
         </Modal>
-      </>
-      <Container>
-        <div className=' d-flex flex-wrap justify-content-between align-items-center py-3 px-2'>
+        <div className='d-flex flex-wrap justify-content-between align-items-center py-3 px-2'>
           <Link to={'/'} className='col-3 position-relative' style={{ top: '5px' }} >
             <img height={'45px'} src={logo} alt="logo" />
           </Link>
@@ -143,7 +144,7 @@ export default function NavBar() {
               بحث
             </p>
           </div>
-          <div className='col-3 d-flex align-items-center justify-content-end gap-4 order-1 order-md-3'>
+          <div className='col-2 d-flex align-items-center justify-content-end gap-4 order-1 order-md-3'>
             <div style={{ cursor: 'pointer' }} onClick={handleShow}>
               <img src={shopping} width={'25px'} alt='cart' />
             </div>
@@ -152,15 +153,21 @@ export default function NavBar() {
             </Link>
           </div>
         </div>
+        {/*  
         <div>
           <div className='mt-4 d-flex align-items-center justify-content-between text-white flex-wrap '>
-            {loading ? <GetSkeleton length={5} height={'35px'} width={'150px'} classes={'col-lg-2 col-md-4 col-12'} /> : showCategories}
-            <p onClick={handleCategory} className='category-bar m-0 px-2 py-3'>
-              Show More
-            </p>
+            {loading ? <GetSkeleton length={5} height={'35px'} width={'150px'} classes={'col-lg-2 col-md-4 col-12'} /> :
+              <div className='d-flex align-items-center justify-content-between w-100'>
+                {showCategories}
+                <p onClick={handleCategory} className='category-bar m-0 px-2 py-3'>
+                  Show More
+                </p>
+              </div>}
+
           </div>
         </div>
-      </Container>
-    </div>
+        */}
+      </Container >
+    </div >
   )
 }

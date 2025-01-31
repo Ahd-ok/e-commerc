@@ -30,7 +30,7 @@ export default function ShowLatestSaleProducts() {
   return (
     <div className='bg-section'>
       <Container>
-        <h1 className='text-light py-5 text-end'>: أحدث التخفيضات</h1>
+        <h1 style={{ margin: '0' }} className='text-light text-end'>: أحدث التخفيضات</h1>
         <div className='d-flex align-items-stretch justify-content-center flex-wrap row-gap-1'>
           {
             loading
