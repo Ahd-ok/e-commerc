@@ -8,8 +8,7 @@ import { LOGOUT, USER } from '../../../Api/Api';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookie from 'cookie-universal'
 import Loading from '../Spinner/Loading';
-import bg from '../../../Assets/logo.png'
-
+import bg from '../../../Assets/logo2.png'
 export default function TopBar() {
 
   //Use Cookie
@@ -45,17 +44,14 @@ export default function TopBar() {
   //Use Context To change value when click on icon
   const menu = useContext(Menu);
   return (
-    <>
+    <div className='top-bar'>
       {loading && <Loading />}
-      <div className='top-bar d-flex align-items-center justify-content-between'>
-        <div
-          className='d-flex align-items-center gap-5'>
-          <Link to='/' className='mx-4'><img width={'90px'} src={bg} alt="" /></Link>
-          <FontAwesomeIcon color='white' onClick={() => menu.setOpen(prev => !prev)}
-            cursor={'pointer'}
-            icon={faBars} />
-        </div>
+      <div className='container d-flex align-items-center justify-content-end'>
+        <FontAwesomeIcon color='white' onClick={() => menu.setOpen(prev => !prev)}
+          cursor={'pointer'}
+          icon={faBars} />
 
+        {/* 
         <div className='d-flex align-items-center gap-3'>
           {role === '1995' || role === '1999' ? <>
             <Link className='text-white' to='/'>
@@ -70,8 +66,8 @@ export default function TopBar() {
               <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </div>
+        </div> */}
       </div>
-    </>
+    </div>
   )
 }

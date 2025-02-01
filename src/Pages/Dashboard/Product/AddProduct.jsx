@@ -174,7 +174,7 @@ export default function AddProduct() {
   function backBtn() {
     setLoadingBack(true);
     setTimeout(() => {
-      nav('/dashboard', { replace: true })
+      nav('/products', { replace: true })
     }, 500)
   }
 
