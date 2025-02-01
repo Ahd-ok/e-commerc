@@ -24,6 +24,7 @@ export default function NavBar() {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   const [spinner, setSpinner] = useState(false);
+  const [reload, setReload] = useState(false);
   const [products, setProducts] = useState([]);
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(1)
@@ -43,14 +44,15 @@ export default function NavBar() {
       setName(res.data.name);
       setRole(res.data.role)
     })
-  }, []);
+  }, [reload]);
 
 
   // Handle LogOut
   async function handleLogout() {
     try {
       await Axios.get(`/${LOGOUT}`);
-      cookie.remove('e-commerce')
+      cookie.remove('e-commerce');
+      setReload((prev) => !prev);
     } catch (error) {
       console.log(error)
     }
@@ -172,7 +174,7 @@ export default function NavBar() {
                       < Dropdown.Menu >
                         {role === '1999' || role === '1995' ?
                           <Dropdown.Item as="button" >
-                            <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                            <Link className='text-dark' to='/dashboard'>Dashboard</Link>
                           </Dropdown.Item> : ''}
                         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                       </Dropdown.Menu>

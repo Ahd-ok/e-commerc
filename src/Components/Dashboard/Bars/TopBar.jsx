@@ -61,9 +61,6 @@ export default function TopBar() {
             <Link className='text-white' to='/'>
               Home Page
             </Link>
-            <Link className='text-white' to='/dashboard'>
-              DashBoard
-            </Link>
           </> : ''}
           <Dropdown>
             <Dropdown.Toggle variant="light" id="dropdown-basic">

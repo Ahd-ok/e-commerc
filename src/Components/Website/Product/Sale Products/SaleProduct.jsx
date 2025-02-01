@@ -19,12 +19,12 @@ export default function Product(props) {
       <div className='m-1 rounded border bg-light p-3'>
         <div className='border-bottom'>
           <div className='mb-3 '>
-            <img className='rounded' width={'100%'} src={props.img} alt="" />
+            <img className='rounded' width={'100%'} height={'230px'} src={props.img} alt="" />
           </div>
           <h3 className='text-dark'>{shortName(props.title, 30)}</h3>
 
           <div className=' d-flex align-items-start justify-content-between'>
-            <p className='text-secondary'>{shortName(props.description, 50)}</p>
+            <p className='text-secondary '>{shortName(props.description, 30)}</p>
             <p
               className='sale fw-bold d-flex align-items-center justify-content-center bg-primary text-light rounded-circle'>
               SALE

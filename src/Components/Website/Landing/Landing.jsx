@@ -7,7 +7,7 @@ export default function Landing() {
     <div className='landing'>
       <div className='container landing-contain d-flex justify-content-between align-items-center'>
         <div className="col-md-6 d-sm-none d-md-block">
-          <img width={'90%'} src={landing} alt="landing" />
+          <img className='ms-3' width={'80%'} src={landing} alt="landing" />
         </div>
         <div className="text col-12 col-md-5 text-md-end text-center mt-2 order-sm-2 order-1 py-5">
           <h1 className='text-white m-0'>Astro</h1>

@@ -3,7 +3,7 @@
   background-image: url(../../../Assets/BackGround.jpg);
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: 120vh;
 }
 
 .landing .landing-contain {
@@ -11,7 +11,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding-top: 70px;
 }
 
 .landing .text {

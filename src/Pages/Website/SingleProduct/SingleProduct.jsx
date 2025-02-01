@@ -109,9 +109,9 @@ export default function SingleProduct() {
             <div style={{ backgroundColor: 'rgb(255 255 255 / 0.7)' }}
               className='mt-5 d-flex align-items-start justify-content-center column-gap-5 flex-wrap p-4 rounded'>
               <div className='col-lg-7 col-md-6 col-12 text-end pb-5 '>
-                <h1 className='mb-3'>{product.title}</h1>
-                <h5 className='mb-5 text-secondary'>{product.description}</h5>
-                <h3 className='border-bottom pb-5'>{product.About}</h3>
+                <h2 className='mb-3'>{product.title}</h2>
+                <h6 className='mb-5 text-secondary'>{product.description}</h6>
+                <h5 className='border-bottom pb-5'>{product.About}</h5>
                 <div>
                   {product.stock <= 5 && <p className='text-danger'>There is only {product.stock} left</p>}
                   {Stars(product.rating)}
