@@ -179,7 +179,7 @@ export default function AddProduct() {
   }
 
   return (
-    <div className='w-100 p-2'>
+    <div className='bg-section p-2'>
       <h2 className="text-white">Add Product</h2>
       <Form
 

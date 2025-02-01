@@ -32,7 +32,6 @@ ul {
 
 .bg-section {
   background-image: url(./Assets/BackGround.jpg);
-
   background-position: center;
   background-size: cover;
 }

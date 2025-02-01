@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Landing() {
   return (
     <div className='landing'>
-      <div className='container landing-contain d-flex justify-content-between align-items-center'>
+      <div className='container landing-contain d-flex justify-content-between align-items-center pt-5'>
         <div className="col-md-6 d-sm-none d-md-block">
           <img className='ms-3' width={'80%'} src={landing} alt="landing" />
         </div>
@@ -13,7 +13,7 @@ export default function Landing() {
           <h1 className='text-white m-0'>Astro</h1>
           <p className='text-warning m-0'>احصل على أحدث قطع الكمبيوتر الأصلية بأفضل الأسعار، من المعالجات إلى كروت الشاشة! تسوق الآن واستمتع بالعروض الحصرية!
           </p>
-          <Link to='/shop' className='btn btn-light mt-4'>إبدء الأن</Link>
+          <Link to='/' className='btn btn-light mt-4'>إبدء الأن</Link>
         </div>
       </div>
     </div>

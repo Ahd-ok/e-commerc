@@ -13,10 +13,12 @@ export default function Dashboard() {
   const { isOpen } = useContext(Menu);
 
   return (
-    <div className='landing position-relative'>
+    <div className='landing'>
       <TopBar />
       <SideBar />
-      <div className='bg-section' style={{ paddingLeft: windowsize > '767' ? isOpen ? '200px' : '70px' : '' }}>
+      <div style={{
+        paddingLeft: windowsize > '767' ? isOpen ? '200px' : '70px' : '',
+      }}>
         <Outlet />
       </div>
     </div >

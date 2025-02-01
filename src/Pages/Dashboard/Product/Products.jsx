@@ -71,7 +71,7 @@ export default function Products() {
   ]
 
   return (
-    <div className='w-100 p-2'>
+    <div className='bg-section p-2'>
       <div className='d-flex align-items-center justify-content-between'>
         <h1 className="text-white">Products Page</h1>
         <Link to={'/dashboard/product/add'} className='btn btn-light p-2'>

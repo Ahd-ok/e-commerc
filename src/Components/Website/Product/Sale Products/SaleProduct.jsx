@@ -15,14 +15,13 @@ export default function Product(props) {
   }
 
   return (
-    <div className={`col-lg-${props.col} col-md-6 col-12 `}>
-      <div className='m-1 rounded border bg-light p-3'>
-        <div className='border-bottom'>
-          <div className='mb-3 '>
-            <img className='rounded' width={'100%'} height={'230px'} src={props.img} alt="" />
+    <div className={`col-lg-${props.col} col-md-6 col-12`}>
+      <div className='m-1 rounded border bg-light p-3 d-flex flex-column justify-content-between h-100'>
+        <div >
+          <div className='mb-3'>
+            <img className='rounded w-100' style={{ aspectRatio: '16/9', objectFit: 'cover' }} src={props.img} alt="" />
           </div>
-          <h3 className='text-dark'>{shortName(props.title, 30)}</h3>
-
+          <h3 className='text-dark'>{shortName(props.title, 25)}</h3>
           <div className=' d-flex align-items-start justify-content-between'>
             <p className='text-secondary '>{shortName(props.description, 30)}</p>
             <p
@@ -32,7 +31,7 @@ export default function Product(props) {
           </div>
         </div>
         <div className='mt-2'>
-          <div>
+          <div className='border-top pt-2'>
             {Stars(props.rate)}
             <div className='d-flex align-items-center justify-content-between'>
               <div className='d-flex align-items-center gap-2'>
@@ -44,6 +43,6 @@ export default function Product(props) {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

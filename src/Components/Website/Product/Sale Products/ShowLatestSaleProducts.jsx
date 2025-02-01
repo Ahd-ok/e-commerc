@@ -31,7 +31,7 @@ export default function ShowLatestSaleProducts() {
     <div className='bg-section py-5'>
       <Container>
         <h1 style={{ margin: '0' }} className='text-light text-end  py-5'>: أحدث التخفيضات</h1>
-        <div className='d-flex align-items-stretch justify-content-center flex-wrap row-gap-1'>
+        <div className='d-flex align-items-stretch justify-content-center flex-wrap row-gap-3'>
           {
             loading
               ? <GetSkeleton length={4} height={'400px'} classes={'col-lg-3 col-md-4 col-12'} />

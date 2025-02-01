@@ -63,7 +63,7 @@ export default function Users() {
   ]
 
   return (
-    <div className='w-100 p-2'>
+    <div className='new-style p-2'>
       <div className='d-flex align-items-center justify-content-between'>
         <h1 className='text-white'>User Page</h1>
         <Link to={'/dashboard/user/add'} className='btn btn-light p-2'>

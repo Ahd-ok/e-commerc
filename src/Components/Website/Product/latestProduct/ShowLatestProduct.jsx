@@ -29,7 +29,7 @@ export default function ShowLatestProduct() {
 
   return (
     <div className='col-md-6 col-12'>
-      <div style={{ border: '2px solid white' }} className=' d-flex align-items-stretch justify-content-end flex-wrap p-3 ms-md-3  rounded'>
+      <div style={{ border: '2px solid white' }} className=' d-flex align-items-stretch justify-content-end flex-wrap p-3 ms-md-3 rounded row-gap-3'>
         <h1 className='py-2 text-light fw-bold'>: أحدث المنتجات </h1>
         {
           loading

@@ -142,7 +142,7 @@ export default function NavBar() {
             </Modal.Footer>
           </Modal>
           <div className='d-flex flex-wrap justify-content-between align-items-center py-3 px-2'>
-            <Link to={'/'} className='col-3 position-relative' style={{ top: '5px' }} >
+            <Link to={'/'} className='col-3' style={{ top: '5px' }} >
               <img height={'30px'} src={logo} alt="logo" />
             </Link>
             <div className='col-12 col-md-4 col-xl-6 order-md-2 order-3 mt-md-0 mt-3 d-flex align-items-center col-5 '>
